@@ -83,7 +83,9 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 *Hello {} !*
-✪ I'm an anime-theme management bot [✨](https://telegra.ph/file/11b5922a33de9968cedfe.jpg)
+✪ Saya Adalah Bot Music+Manager.
+✪ Bot Music, Bisa Memutar Music dan Streaming Di Obrolan Suara Group.
+✪ Bot Manager, Memperindah Tampilan Group atau Hanya Berbuat Beramin-main [😑](https://telegra.ph/file/b908dc3669562895e8afa.jpg)
 ────────────────────────
 × *Uptime:* `{}`
 × `{}` *users, across* `{}` *chats.*
@@ -93,20 +95,20 @@ PM_START_TEXT = """
 
 buttons = [
     [
-        InlineKeyboardButton(text=f"About {dispatcher.bot.first_name}", callback_data="emiko_"),
+        InlineKeyboardButton(text="My Bos", url="https://t.me/saya_wiki"),
     ],
     [
         InlineKeyboardButton(text="Get Help", callback_data="help_back"),
-        InlineKeyboardButton(
-            text="Try inline!​​", switch_inline_query_current_chat=""
-        ),
+        InlineKeyboardButton(text="Music Help", callback_data="emiko_music"),
+    ],
+    [
+        InlineKeyboardButton(text="About Wiki", callback_data="emiko_"),
     ],
     [
         InlineKeyboardButton(
             text="➗ Add Me To Your Group ➗", url=f"t.me/{bu}?startgroup=new"),
     ],
 ]
-
 
 HELP_STRINGS = """
 Click on the button bellow to get description about specifics command."""
@@ -387,6 +389,26 @@ def emiko_about_callback(update, context):
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="source_back"),
+                 ]
+                ]
+            ),
+        )
+        
+     elif query.data == "emiko_music":
+        query.message.edit_text(
+            text="*๏Perintah Bot Music+Streaming*"
+            "\nKlik di bawah ini untuk lebih jelas perintah Bot Music+Streaming.",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                 [
+                    InlineKeyboardButton(text="CD Music", url="https://t.me/chnlwiki/138"),
+                    InlineKeyboardButton(text="CD Dev", url="https://t.me/chnlwiki/139"),
+                    InlineKeyboardButton(text="CD Stream", url="https://t.me/chnlwiki/140"),
+                 ],
+                 [
+                    InlineKeyboardButton(text="Go Back", callback_data="emiko_"),
                  ]
                 ]
             ),
